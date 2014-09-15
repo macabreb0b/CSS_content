@@ -43,7 +43,7 @@
         white-space:nowrap;
       }
       
-      a:nth-of-type(1):hover::before {
+      a.story:nth-of-type(1):hover::before {
         top: 0;
         left: 0;
         content: '::before !!';
@@ -51,38 +51,52 @@
         background-color: coral;
       }
       
-      a:nth-of-type(1):hover::after {
+      a.story:nth-of-type(1):hover::after {
         top: 0;
         content: '::after !!';
         transform: rotateZ(15deg);
       }
       
-      a:nth-of-type(2):hover::after {
+      a.story:nth-of-type(2):hover::after {
         content: none;
       }
       
-      a:nth-of-type(3):hover::after {
+      a.story:nth-of-type(3):hover::after {
         content: "";
       }
       
-      a:nth-of-type(4):hover::after {
+      a.story:nth-of-type(4):hover::after {
         content: 'To be or not to be, that is the question';
       }
       
-      a:nth-of-type(5):hover::after {
+      a.story:nth-of-type(5):hover::after {
         content: 'WRONG!!! :)';
       }
       
-      a:nth-of-type(6):hover::after {
+      a.story:nth-of-type(6):hover::after {
         content: attr(href);
       }
       
-      a:nth-of-type(7):hover::after {
+      a.story:nth-of-type(7):hover::after {
         content: 'Visit this website! ' attr(href);
       }
       
-      a:nth-of-type(8):hover::after {
+      a.story:nth-of-type(8):hover::after {
         content: attr(tooltip);
+      }
+      
+      .links a:hover::after {
+        top: -50%;
+        left: 50%;
+        transform-origin: 0% 100%;
+        transform: rotateZ(-40deg);
+      }
+      
+      .links a:first-child:hover::after {
+        content: 'CSS-tricks is great!';
+      }
+      .links a:nth-child(2):hover::after {
+        content: 'We \2665  MDN';
       }
     </style>
   </head>
@@ -92,39 +106,48 @@
       Using the <code>content</code> property
     </h1>
     
-    <a href='#' note='#'>
+    <a class='story' href='#' note='#'>
       We like to use <code>::before</code> and <code>::after</code> elements.
     </a><br>
     
-    <a href='#'>
+    <a class='story' href='#'>
       But these pseudo elements will <b>not be generated</b> if their content is set to 'none' (this is the default).
     </a><br>
     
-    <a href='#'>
+    <a class='story' href='#'>
       Use <code>content: "";</code> with <code>::after</code> and <code>::before</code> pseudo-elements to get them to show up.
     </a><br>
     
-    <a href='#'>
+    <a class='story' href='#'>
       Or you can write a whole story. This one has <code>content: 'To be or not to be, that is the question';</code>
     </a><br>
     
-    <a href='#'>
+    <a class='story' href='#'>
       Neato! So that's all that <code>content</code> does, right? 
     </a><br>
     
-    <a href='http://www.drwrchrds.com'>
+    <a class='story' href='http://www.drwrchrds.com'>
       You can use attr() to pull values from your html tags. This <code>a</code> tag has <code>content: attr(href);</code> 
     </a><br>
     
-    <a href='http://www.drwrchrds.com'>
+    <a class='story' href='http://www.drwrchrds.com'>
       You can also combine attr() values and strings, like so: <code>content: 'Visit this website!' attr(href);</code> 
     </a><br>
     
-    <a href='#' tooltip="Don't forget to bring a towel!">
+    <a class='story' href='#' tooltip="Don't forget to bring a towel!">
        You can also add your own custom tag attributes. This can be useful for custom tooltips. For example,<br>this tag's HTML looks like: <code>&lt;a href="#" tooltip="Don't forget to bring a towel!"&gt;</code><br> and has this CSS: <code>content: attr(tooltip);</code>
     </a><br>
     
-    
+    <br><br>
+
+    <div class='links' style='margin-top:20px;text-align:center;'>
+      <a href="http://css-tricks.com/css-content/">More on content at CSS-tricks</a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content">More at MDN</a><br>
+      by andrew richards <a href='http://www.drwrchrds.com'>site</a> 
+      <a href='http://twitter.com/drwrchrds'>@drwrchrds</a>
+      <a href='http://github.com/drwrchrds'>github</a> 
+      <a href='http://linkedin.com/in/drwrchrds'>linkedin</a>
+    </div>
  
   </body>
 </html>
